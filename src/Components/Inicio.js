@@ -1,10 +1,18 @@
 import React from 'react';
-
+import '../CSS/Inicio.css';
 const Inicio = () =>{
     return(
         <div className='ui segment'>
-            <h2>Bienvenido a la página</h2>
-            <p>En esta pagina vas a repasar temas de cultura general</p>
+            <div className='principal'>
+                <h1 className='ui header'>QuizPath
+                    <div className='sub header'>
+                        ¿Te gustan los retos y aprender más cada día?
+                        <br></br>
+                        Prueba tus conocimientos y aprende más con QuizPath
+                    </div>
+                </h1>
+            </div>
+            
         </div>
     );
 }
