@@ -3,27 +3,35 @@ import { Routes, Route, BrowserRouter, NavLink } from 'react-router-dom'
 import Inicio from '../Components/Inicio'
 import Estadisticas from '../Components/Estadisticas'
 import { Error } from '../Components/Error'
-import { Menu } from '../Components/Menu'
-
+import { Categorias } from  '../Components/Categorias'
+import Perfil from '../Components/Perfil'
+import '../CSS/Router.css'
+import Login from '../Components/Login'
 export const RouterPrincipal = () => {
     return (
-        <BrowserRouter className='menu'>
+        <BrowserRouter>
             <header>
-                    <nav>
-                        <ul>
-                        <NavLink className={({ isActive }) => isActive ? "activado" : ""} to="/inicio">Inicio</NavLink>
+                    <div className='ui menu'>
+                        <NavLink className={({ isActive }) => isActive ? "active  blue item" : "blue item"} to="/inicio">Inicio</NavLink>
                         &nbsp;
-                        <NavLink className={({ isActive }) => isActive ? "activado" : ""} to="/estadisticas">Estadisticas</NavLink>
+                        <NavLink className={({ isActive }) => isActive ? "active blue item" : "blue item"} to="/categorias">Categorias</NavLink>
                         &nbsp;
-                        <NavLink className={({ isActive }) => isActive ? "activado" : ""} to="/menu">Menú</NavLink>
-                    </ul>
-                    </nav>
+                        <NavLink className={({ isActive }) => isActive ? "active blue item" : "blue item"} to="/estadisticas">Estadisticas</NavLink>
+                        &nbsp;
+                        <NavLink className={({ isActive }) => isActive ? "active blue item" : "blue item"} to="/perfil">Perfil</NavLink>
+                        <div className='right menu back'>
+                            <NavLink className={({ isActive }) => isActive ? "active blue item" : "blue item"} to="/login"> Login</NavLink>
+                        </div>
+                    </div>
+                    
             </header>
             <section className='content'>
                 <Routes>
-                    <Route path='/inicio' element={<Inicio></Inicio>} />
-                    <Route path='/estadisticas' element={<Estadisticas></Estadisticas>} />
-                    <Route path='/menu' element={<Menu></Menu>} />
+                    <Route path='/inicio' element={<Inicio/>} />
+                    <Route path='/estadisticas' element={<Estadisticas/>} />
+                    <Route path='/categorias' element={<Categorias/>} />
+                    <Route path='/perfil' element={<Perfil/>} />
+                    <Route path='/login' element={<Login/>}/>
                     <Route path="/" element={<Inicio />} />
                     <Route path="*" element={<Error/>} />
                 </Routes>
