@@ -32,7 +32,7 @@ export const RouterPrincipal = () => {
                     <Route path='/categorias' element={<Categorias/>} />
                     <Route path='/perfil' element={<Perfil/>} />
                     <Route path='/login' element={<Login/>}/>
-                    <Route path="/" element={<Inicio />} />
+                    <Route path="/" element={<Inicio/>} />
                     <Route path="*" element={<Error/>} />
                 </Routes>
             </section>
