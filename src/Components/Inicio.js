@@ -15,7 +15,6 @@ const Inicio = () =>{
                     Prueba tus conocimientos y aprende más con QuizPath
                 </h2>
             </div>
-            
         </div>
     );
 }
