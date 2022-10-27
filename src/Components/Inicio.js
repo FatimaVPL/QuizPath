@@ -9,10 +9,11 @@ const Inicio = () =>{
                         ¿Te gustan los retos y aprender más cada día?
                         <br></br>
                         Prueba tus conocimientos y aprende más con QuizPath
+                        
                     </div>
                 </h1>
             </div>
-            
+                
         </div>
     );
 }
