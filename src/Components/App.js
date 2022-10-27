@@ -4,7 +4,7 @@ import { RouterPrincipal } from '../rutas/RouterPrincipal';
 
 const App = () => {
     return (
-        <div className='ui container'>
+        <div className=''>
             <RouterPrincipal />
         </div>
 

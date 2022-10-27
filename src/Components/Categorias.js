@@ -2,7 +2,7 @@ import React from 'react'
 import CardSubject from '../Components/CardSubject'
 export const Categorias = () => {
   return (
-    <div className='ui segment'>
+    <div className=''>
         <h2>
           <CardSubject/>
         </h2>

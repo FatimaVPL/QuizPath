@@ -1,16 +1,19 @@
 import React from 'react';
-import '../CSS/Inicio.css';
 const Inicio = () =>{
     return(
-        <div className='ui segment'>
-            <div className='principal'>
-                <h1 className='ui header'>QuizPath
-                    <div className='sub header'>
-                        ¿Te gustan los retos y aprender más cada día?
-                        <br></br>
-                        Prueba tus conocimientos y aprende más con QuizPath
-                    </div>
+        <div className='flex flex-col h-screen rounded-lg bg-yellow-300 '>
+            <div className='flex items-center justify-center'>
+                <h1 className='p-6'>
+                    QuizPath
+                    
                 </h1>
+            </div>
+            <div className='flex items-center justify-center'>
+                <h2>
+                    ¿Te gustan los retos y aprender más cada día?
+                    <br></br>
+                    Prueba tus conocimientos y aprende más con QuizPath
+                </h2>
             </div>
             
         </div>

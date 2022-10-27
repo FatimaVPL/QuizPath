@@ -2,7 +2,7 @@ import React from 'react';
 
 const Login = () =>{
     return(
-        <div className='ui segment'>
+        <div className=''>
             Aqui va el Login
         </div>
     );

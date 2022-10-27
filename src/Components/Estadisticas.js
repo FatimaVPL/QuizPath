@@ -2,7 +2,7 @@ import React from 'react';
 
 const Estadisticas = () => {
     return(
-        <div className='ui segment'>Estadisticas</div>
+        <div className=''>Estadisticas</div>
     );
 }
 
