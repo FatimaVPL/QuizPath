@@ -3,9 +3,8 @@ import TarjetaDePreguntas from './Preguntas/TarjetaDePreguntas';
 
 const Perfil = () =>{
     return(
-        <div className='ui segment'>
-            <TarjetaDePreguntas/>
-        </div>
+        <div className=''>
+            Perfil
     );
 }
 export default Perfil;
