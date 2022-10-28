@@ -1,13 +1,17 @@
 import React from 'react';
-const CardSubject = () =>{
+import {Link} from 'react-router-dom';
+
+const CardSubject = ({name, description}) =>{
     return(
         <div className="flex flex-col items-center p-2 justify-center rounded-lg border-2 w-[30%]">
-            <div className="flex bold">Matemáticas</div>
+            <div className="flex bold">{name}</div>
             <div className="flex">
-                Preguntas sobre conceptos importantes de Matemáticas Basicas.
+                {description}
             </div>
             <div className="flex">
-                <button className="bg-blue-500 p-2 rounded-lg">Jugar</button>
+                <Link to='/jugar'>
+                    <button className="bg-blue-500 p-2 rounded-lg">Jugar</button>
+                </Link>
             </div>
         </div>
         );

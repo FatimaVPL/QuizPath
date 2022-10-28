@@ -1,11 +1,12 @@
 import React from 'react';
 import TarjetaDePreguntas from './Preguntas/TarjetaDePreguntas';
 
-const Perfil = () =>{
+const Jugar = () => {
     return(
-        <div className=''>
-            Perfil
+        <div>
+            <TarjetaDePreguntas/>
         </div>
     );
 }
-export default Perfil;
+
+export default Jugar;
