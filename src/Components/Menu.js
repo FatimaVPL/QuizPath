@@ -1,23 +1,24 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-const Menu = () => {
+const Menu = ({abrirCerrar}) => {
     return(
         <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm'>
             <Link to="/" className='pl-8'>Logo</Link>
-            <div className='px-4 cursor-pointer md:hidden'>
+            <div className='px-4 cursor-pointer md:hidden' onClick={abrirCerrar}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
                     className='h-6 w-6'
                     fill='none'
                     viewBox='0 0 24 24'
                     stroke='currentColor'
-                />
+                >
                 <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
                     strokeWidth={2}
                     d='M4 6h16M4 12h8m-8 6h16'
                 />
+                </svg>
             </div>
 
             <div className='pr-8 hidden md:block'>
