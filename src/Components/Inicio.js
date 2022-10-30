@@ -22,7 +22,7 @@ const Inicio = () =>{
     }
     return(
         <div className='h-screen'>
-            <Menu/>
+            <Menu abrirCerrar={toggleOpen}/>
             {isOpen && <MenuResponsive abrirCerrar={toggleOpen}/>}
             <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
                 <div className='flex items-center justify-center'>

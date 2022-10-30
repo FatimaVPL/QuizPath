@@ -20,7 +20,6 @@ const categories = [
 ];
 
 export const Categorias = () => {
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   const categoryList = categories.map(
     (cat) => {
       return <CardSubject name={cat.name} description={cat.description}/>
@@ -28,31 +27,31 @@ export const Categorias = () => {
   );
   const[isOpen, setIsOpen] = useState(false);
     
-    useEffect(() => {
-        const ocultarMenu = () =>{
-            if(window.innerWidth > 768 && isOpen){
-                setIsOpen(false);
-            }            
-        }
-        window.addEventListener("resize", ocultarMenu);
+  useEffect(() => {
+      const ocultarMenu = () =>{
+          if(window.innerWidth > 768 && isOpen){
+              setIsOpen(false);
+          }            
+      }
+      window.addEventListener("resize", ocultarMenu);
 
-        return () => {
-            window.removeEventListener("resize", ocultarMenu);
-        }
-    });
+      return () => {
+          window.removeEventListener("resize", ocultarMenu);
+      }
+  });
 
-    const toggleOpen = () =>{
-        setIsOpen(!isOpen);
-    }
-
-    return(
-      <div className='h-screen'>
-          <Menu/>
+  const toggleOpen = () =>{
+      setIsOpen(!isOpen);
+  }
+  return(
+      <div className='h-screen w-screen'>
+          <Menu abrirCerrar={toggleOpen}/>
           {isOpen && <MenuResponsive abrirCerrar={toggleOpen}/>}
-          <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
+          <div className='flex-col h-full w-full rounded-lg justify-center items-center bg-yellow-300 md:flex'>
             {categoryList}
           </div>
       </div>
   );
 }
+
 export default Categorias;

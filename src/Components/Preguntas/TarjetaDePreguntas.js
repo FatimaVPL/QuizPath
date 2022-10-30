@@ -1,18 +1,25 @@
 import React from 'react';
-import Pregunta from './Pregunta';
-import Respuesta from './Respuesta';
+const TarjetaDePreguntas = ({pregunta, respuestas, veredicto}) => {
+    const listaRespuestas = respuestas.map(
+        (r) => {
+            return( 
+                <div className='flex items-center mx-4'>
+                    <button className='text-3xl rounded-lg bg-sky-500 text-white w-full'
+                        onClick={veredicto}
+                    >{r.name}
+                    </button>                    
+                </div>
 
-const TarjetaDePreguntas = () => {
+            );
+        }
+    );
     return(
-        <div>
-            <div>
-                <Pregunta name="Como se llama tu nombre"/>
+        <div className='flex flex-col m-4 rounded-lg border-2 p-4 bg-purple-200'>
+            <div className='text-3xl bold m-4'>
+                {pregunta}
             </div>
-            <div>
-                <Respuesta name="Mario"/>
-                <Respuesta name="Menho"/>
-                <Respuesta name="Fati"/>
-                <Respuesta name="Gabi"/>
+            <div className='grid grid-cols-2 gap-2 items-center justify-between'>
+                {listaRespuestas}
             </div>
         </div>
     );

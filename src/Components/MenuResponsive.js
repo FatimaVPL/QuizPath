@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-const MenuResponsive = () => {
+const MenuResponsive = ({abrirCerrar}) => {
     return(
         <div className='grid grid-rows-3 text-center items-center bg-purple-300'>
             <Link className='p-4' to='/inicio'>
