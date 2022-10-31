@@ -7,7 +7,7 @@ const pregunta = 'cuanto es 2 + 2?'
 const respuestas = [
     {
         name: '4',
-        correcta: false,
+        correcta: true,
     },
     {
         name: '5',
@@ -31,11 +31,12 @@ const Jugar = () => {
         setRespondido(false);
         setCont(cont + 1);
     }
-    const esCorrecta = () => {
-        setCorrecta(!correcta);
+    const esCorrecta = (v) => {
+        setCorrecta(v);
         setRespondido(true);
     }
     const ver = correcta? "Correcta :)" : "Incorrecta :("; 
+    console.log(respondido);
     return(
         <div className='flex flex-col h-screen w-screen'>
             <BannerCategoria name='Matematicas'/>
