@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import Menu from './Menu';
+import MenuResponsive from './MenuResponsive';
 
 const Login = () => {
-     // React States
+    const[isOpen, setIsOpen] = useState(false);
+    
+    useEffect(() => {
+        const ocultarMenu = () =>{
+            if(window.innerWidth > 768 && isOpen){
+                setIsOpen(false);
+            }            
+        }
+        window.addEventListener("resize", ocultarMenu);
+
+        return () => {
+            window.removeEventListener("resize", ocultarMenu);
+        }
+    });
+
+    const toggleOpen = () =>{
+        setIsOpen(!isOpen);
+    }
+
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // User Login info
   const database = [
     {
       username: "Fati",
@@ -27,20 +46,20 @@ const Login = () => {
   ];
 
   const errors = {
-    uname: "invalid username",
-    pass: "invalid password"
+    uname: "Usuario no valido",
+    pass: "Contraseña no valida"
   };
 
   const handleSubmit = (event) => {
-    //Prevent page reload
+    //Prevenir reload
     event.preventDefault();
 
     var { uname, pass } = document.forms[0];
 
-    // Find user login info
+    // Encontrar la información del usuario
     const userData = database.find((user) => user.username === uname.value);
 
-    // Compare user info
+    // Comparar información
     if (userData) {
       if (userData.password !== pass.value) {
         // Invalid password
@@ -49,18 +68,18 @@ const Login = () => {
         setIsSubmitted(true);
       }
     } else {
-      // Username not found
+      // Usuario no encontrado
       setErrorMessages({ name: "uname", message: errors.uname });
     }
   };
 
-  // Generate JSX code for error message
+  //Se muestra cuando hay un error
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
     );
 
-  // JSX code for login form
+  // Formulario
   const renderForm = (
     <div className="h-screen w-screen">
       <form onSubmit={handleSubmit}>
@@ -82,7 +101,10 @@ const Login = () => {
   );
 
   return (
-    <div className='h-screen w-screen'>
+    <div className='h-screen'>
+         <Menu abrirCerrar={toggleOpen}/>
+            {isOpen && <MenuResponsive abrirCerrar={toggleOpen}/>}
+        <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
         <div className="title">Sign In</div>
         {isSubmitted ? <div>Bienvenido</div> : renderForm}
         <Link to='/inicio'>
@@ -90,6 +112,7 @@ const Login = () => {
                     Volver
                 </button>
             </Link>
+            </div>
       </div>
   );
 }
