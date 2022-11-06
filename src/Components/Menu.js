@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 const Menu = ({abrirCerrar}) => {
     return(
         <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm'>
-            <Link to="/" className='pl-8'>Logo</Link>
+            <Link to="/login" className='pl-8'>Login</Link>
             <div className='px-4 cursor-pointer md:hidden' onClick={abrirCerrar}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
