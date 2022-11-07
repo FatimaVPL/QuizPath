@@ -27,7 +27,7 @@ const Menu = ({abrirCerrar}) => {
             </div>
 
             <div className='pr-8 hidden md:block'>
-                <Link to={history.push({pathname: '/inicio', state: {title: 'Simobolos raros'}})}
+                <Link to='/inicio'
                  className='p-4'>Inicio</Link>
                 <Link to='/categorias' className='p-4'>Categorias</Link>
                 <Link to='/estadisticas' className='p-4'>Estadisticas</Link>

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Menu from './Menu';
 import MenuResponsive from './MenuResponsive';
-
+import { auth, db, } from '../database/firebase';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import {collection, addDoc} from "firebase/firestore";
 const Login = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -22,10 +24,11 @@ const Login = () => {
     const toggleOpen = () => {
         setIsOpen(!isOpen);
     }
-
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
-
+    const [user, setUser] = useState('');
     const database = [
         {
             username: "Fati",
@@ -44,6 +47,18 @@ const Login = () => {
             password: "123M"
         }
     ];
+
+    const logInWithEmailAndPassword = async (email, password) => {
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          setIsSubmitted(true);
+          console.log(auth.currentUser);
+          setUser(auth.currentUser.email);
+        } catch (err) {
+          console.error(err);
+          alert(err.message);
+        }
+      };
 
     const errors = {
         uname: "Usuario no valido",
@@ -79,25 +94,48 @@ const Login = () => {
             <div className="error">{errorMessages.message}</div>
         );
 
+        const registerWithEmailAndPassword = async (name, email, password) => {
+            try {
+              const res = await createUserWithEmailAndPassword(auth, email, password);
+              const user = res.user;
+              await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name,
+                authProvider: "local",
+                email,
+              });
+              alert("Usuario Registrado");
+            } catch (err) {
+              console.error(err);
+              alert(err.message);
+            }
+          };
+
     // Formulario
     const renderForm = (
         <div className="h-screen w-screen">
-            <form onSubmit={handleSubmit}>
-                <div className="input-container">
-                    <label id='login'>Usuario </label>
-                    <input type="text" name="uname" required />
-                    {renderErrorMessage("uname")}
-                </div>
-                <div className="input-container">
-                    <label id='login'>Contraseña </label>
-                    <input type="password" name="pass" required />
-                    {renderErrorMessage("pass")}
-                </div>
-                <br></br>
-                <div className="button-container">
-                    <input type="submit" />
-                </div>
-            </form>
+            <input
+                type="text"
+                className="text-2xl"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Usuario"
+            />
+            <input
+                type="password"
+                className="login__textBox"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Constrasenia"
+            />
+            <div className='flex'>
+                <button onClick={() => logInWithEmailAndPassword(email, password)}>
+                    Login
+                </button>
+                <button onClick={() => registerWithEmailAndPassword("Mario", email, password)}>
+                    Registrarse
+                </button>
+            </div>
         </div>
     );
 
@@ -107,7 +145,8 @@ const Login = () => {
             {isOpen && <MenuResponsive abrirCerrar={toggleOpen} />}
             <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
                 <div className="title">Sign In</div>
-                {isSubmitted ? <div className='bienveido-etiqueta'>Bienvenido</div> : renderForm}
+                {!isSubmitted && renderForm}
+                {isSubmitted && <div className='bienveido-etiqueta'>Bienvenido {user} </div> }
                 <Link to='/inicio'>
                 </Link>
             </div>
