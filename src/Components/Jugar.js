@@ -27,16 +27,17 @@ const Jugar = () => {
     const [respondido, setRespondido] = useState(false);
     const [correcta, setCorrecta] = useState(false);
     const [cont, setCont] = useState(1);
+    const [aciertos, setAciertos] = useState(0);
     const siguientePregunta = () => {
         setRespondido(false);
         setCont(cont + 1);
     }
-    const esCorrecta = (v) => {
+    const esCorrecta = ( v ) => {
         setCorrecta(v);
+        setAciertos(aciertos + v);
         setRespondido(true);
     }
     const ver = correcta? "Correcta :)" : "Incorrecta :("; 
-    console.log(respondido);
     return(
         <div className='flex flex-col h-screen w-screen'>
             <BannerCategoria name='Matematicas'/>
@@ -51,7 +52,7 @@ const Jugar = () => {
                         <Veredicto ver={ver} continuar={siguientePregunta}/>
                     }          
                     {respondido && cont === 10 &&
-                        <Resultados aciertos = {10}/>
+                        <Resultados aciertos = {aciertos}/>
                     }
             </div>
 
