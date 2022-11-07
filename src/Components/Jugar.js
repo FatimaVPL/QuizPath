@@ -7,7 +7,7 @@ const pregunta = 'cuanto es 2 + 2?'
 const respuestas = [
     {
         name: '4',
-        correcta: false,
+        correcta: true,
     },
     {
         name: '5',
@@ -27,12 +27,14 @@ const Jugar = () => {
     const [respondido, setRespondido] = useState(false);
     const [correcta, setCorrecta] = useState(false);
     const [cont, setCont] = useState(1);
+    const [aciertos, setAciertos] = useState(0);
     const siguientePregunta = () => {
         setRespondido(false);
         setCont(cont + 1);
     }
-    const esCorrecta = () => {
-        setCorrecta(!correcta);
+    const esCorrecta = ( v ) => {
+        setCorrecta(v);
+        setAciertos(aciertos + v);
         setRespondido(true);
     }
     const ver = correcta? "Correcta :)" : "Incorrecta :("; 
@@ -50,7 +52,7 @@ const Jugar = () => {
                         <Veredicto ver={ver} continuar={siguientePregunta}/>
                     }          
                     {respondido && cont === 10 &&
-                        <Resultados aciertos = {10}/>
+                        <Resultados aciertos = {aciertos}/>
                     }
             </div>
 

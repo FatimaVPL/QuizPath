@@ -1,6 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 const Menu = ({abrirCerrar}) => {
+    const [logged, setLogged] = useState(false);
+
+    const successLogged = () => {
+        setLogged(true);
+    } 
     return(
         <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm'>
             <Link to="/login" className='pl-8'>Login</Link>
@@ -22,10 +27,12 @@ const Menu = ({abrirCerrar}) => {
             </div>
 
             <div className='pr-8 hidden md:block'>
-                <Link to='/inicio' className='p-4'>Inicio</Link>
+                <Link to={history.push({pathname: '/inicio', state: {title: 'Simobolos raros'}})}
+                 className='p-4'>Inicio</Link>
                 <Link to='/categorias' className='p-4'>Categorias</Link>
                 <Link to='/estadisticas' className='p-4'>Estadisticas</Link>
-                <Link to='/perfil' className='p-4'>Perfil</Link>
+                {logged && <Link to='/perfil' className='p-4'>Perfil</Link>}
+                {!logged && <Link to='/login' className='p-4'>Entrar</Link>}
             </div>
 
         </nav>

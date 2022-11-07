@@ -7,6 +7,7 @@ import Perfil from './Perfil';
 import Login from './Login';
 import Jugar from './Jugar';
 const App = () => {
+
     return (
         <div className="w-full h-full">
             <Router>

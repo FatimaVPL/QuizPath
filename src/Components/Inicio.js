@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Menu from './Menu';
 import MenuResponsive from './MenuResponsive';
-const Inicio = () =>{
+const Inicio = (props) =>{
     function inicio() {
         if (localStorage.getItem('cont') === null) {
             localStorage.setItem('cont',0);
@@ -9,6 +9,8 @@ const Inicio = () =>{
         var cont = JSON.parse(localStorage.getItem('cont'));
         cont++;
         localStorage.setItem('cont', cont);
+        console.log(props);
+        console.log(props.testvalue)
     }  
      
     const[isOpen, setIsOpen] = useState(false);
@@ -46,6 +48,7 @@ const Inicio = () =>{
                         ¿Te gustan los retos y aprender más cada día?
                         <br></br>
                         Prueba tus conocimientos y aprende más con QuizPath
+                        {props.testvalue}
                     </h2>
                 </div>
             </div>

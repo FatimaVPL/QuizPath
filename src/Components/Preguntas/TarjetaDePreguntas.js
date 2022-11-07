@@ -5,7 +5,7 @@ const TarjetaDePreguntas = ({pregunta, respuestas, veredicto}) => {
             return( 
                 <div className='flex items-center mx-4'>
                     <button className='text-3xl rounded-lg bg-sky-500 text-white w-full'
-                        onClick={veredicto}
+                        onClick={() => veredicto(r.correcta)}
                     >{r.name}
                     </button>                    
                 </div>
