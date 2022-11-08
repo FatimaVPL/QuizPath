@@ -113,28 +113,32 @@ const Login = () => {
 
     // Formulario
     const renderForm = (
-        <div className="h-screen w-screen">
-            <input
-                type="text"
-                className="text-2xl"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Usuario"
-            />
-            <input
-                type="password"
-                className="login__textBox"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Constrasenia"
-            />
-            <div className='flex'>
-                <button onClick={() => logInWithEmailAndPassword(email, password)}>
-                    Login
-                </button>
-                <button onClick={() => registerWithEmailAndPassword("Mario", email, password)}>
-                    Registrarse
-                </button>
+        <div className="flex flex-col h-screen w-screen">
+            <div className='flex flex-col items-center justify-center'>
+                Email:
+                <input
+                    type="text"
+                    className="text-2xl"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Usuario"
+                />
+                Contraseña:
+                <input
+                    type="password"
+                    className="text-2xl"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    placeholder="Constrasenia"
+                />
+                <div className='flex'>
+                    <button className='rounded-lg border-radius-2 bg-white text-black bold m-2' onClick={() => logInWithEmailAndPassword(email, password)}>
+                        Login
+                    </button>
+                    <button className='rounded-lg border-radius-2 bg-white text-black bold m-2' onClick={() => registerWithEmailAndPassword("Mario", email, password)}>
+                        Registrarse
+                    </button>
+                </div>
             </div>
         </div>
     );
