@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import { useContexto } from '../Context/Contexto';
 const Menu = ({abrirCerrar}) => {
-    const [logged, setLogged] = useState(false);
-
-    const successLogged = () => {
-        setLogged(true);
-    } 
+    const {user, setUser} = useContexto(null);
     return(
         <nav className='flex justify-between items-center h-16 bg-white text-black relative shadow-sm'>
-            <Link to="/login" className='pl-8'>Login</Link>
+            <Link to="/" className='pl-8'>Logo</Link>
             <div className='px-4 cursor-pointer md:hidden' onClick={abrirCerrar}>
                 <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -31,8 +28,9 @@ const Menu = ({abrirCerrar}) => {
                  className='p-4'>Inicio</Link>
                 <Link to='/categorias' className='p-4'>Categorias</Link>
                 <Link to='/estadisticas' className='p-4'>Estadisticas</Link>
-                {logged && <Link to='/perfil' className='p-4'>Perfil</Link>}
-                {!logged && <Link to='/login' className='p-4'>Entrar</Link>}
+                {user && <Link to='/perfil' className='p-4'>Perfil</Link>}
+                {!user && <Link to='/login' className='p-4'>Entrar</Link>}
+                {user === "admin@gmail.com" && <Link to = '/admin' className='p-4'> Admin</Link>}
             </div>
 
         </nav>

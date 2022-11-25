@@ -5,6 +5,7 @@ import MenuResponsive from './MenuResponsive';
 import { auth, db, } from '../database/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import {collection, addDoc} from "firebase/firestore";
+import { useContexto } from '../Context/Contexto';
 const Login = () => {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -28,7 +29,7 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const [user, setUser] = useState('');
+    const {user, setUser} = useContexto();
     const database = [
         {
             username: "Fati",
@@ -144,7 +145,7 @@ const Login = () => {
     );
 
     return (
-        <div className='h-screen'>
+        <div className='h-full'>
             <Menu abrirCerrar={toggleOpen} />
             {isOpen && <MenuResponsive abrirCerrar={toggleOpen} />}
             <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>

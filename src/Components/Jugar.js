@@ -41,11 +41,11 @@ const Jugar = () => {
     return(
         <div className='flex flex-col h-screen w-screen bg-slate-900'>
             <BannerCategoria name='Matematicas'/>
-            <div className='m-6 border-2 h-screen rounded-lg bg-emerald-300'>
+            <div className='flex flex-col m-4 border-2 h-full w-full p-4 rounded-lg bg-emerald-300'>
                 <div className='flex bold text-3xl m-2'>
                     Pregunta {cont} / 10
                 </div>
-                <div className='h-full w-full flex items-center justify-center'>
+                <div className='flex h-full w-full pr-4 items-center justify-center'>
                     {!respondido && cont <= 10 &&
                         <TarjetaDePreguntas pregunta = {pregunta} respuestas = {respuestas} veredicto = {esCorrecta}/>
                     }

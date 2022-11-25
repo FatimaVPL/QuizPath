@@ -1,21 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { useContexto } from '../Context/Contexto';
 import Menu from './Menu';
 import MenuResponsive from './MenuResponsive';
-import { auth } from '../database/firebase';
-import { signOut } from 'firebase/auth';
-import { Link } from 'react-router-dom';
-const Perfil = () =>{
-    const[isOpen, setIsOpen] = useState(false);
-    const {user, setUser} = useContexto();    
-    const logout = () =>{
-        signOut(auth).then(() => {
-            setUser(null);
-        }).catch((error) => {
-            console.log(error);
-        });
-    }
 
+
+const Admin = () => {
+    const[isOpen, setIsOpen] = useState(false);
+    
     useEffect(() => {
         const ocultarMenu = () =>{
             if(window.innerWidth > 768 && isOpen){
@@ -37,15 +27,10 @@ const Perfil = () =>{
             <Menu abrirCerrar={toggleOpen}/>
             {isOpen && <MenuResponsive abrirCerrar={toggleOpen}/>}
             <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
-                {user}
-                <Link to="/inicio">
-                    <button className='text-3xl rounded-lg bg-sky-500 text-white w-full' onClick={() => logout()}>
-                        Logout
-                    </button>                    
-                </Link>
-                
+                Estadisticas
             </div>
         </div>
     );
 }
-export default Perfil;
+
+export default Admin;

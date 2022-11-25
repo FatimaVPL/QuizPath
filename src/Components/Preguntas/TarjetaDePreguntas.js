@@ -3,7 +3,7 @@ const TarjetaDePreguntas = ({pregunta, respuestas, veredicto}) => {
     const listaRespuestas = respuestas.map(
         (r) => {
             return( 
-                <div className='flex items-center mx-4'>
+                <div className='flex items-center justify-center m-4'>
                     <button className='text-3xl rounded-lg bg-sky-500 text-white w-full'
                         onClick={() => veredicto(r.correcta)}
                     >{r.name}
@@ -14,7 +14,7 @@ const TarjetaDePreguntas = ({pregunta, respuestas, veredicto}) => {
         }
     );
     return(
-        <div className='flex flex-col w-full m-4 rounded-lg border-2 p-4 bg-purple-200'>
+        <div className='flex h-full flex-col justify-center w-full m-4 rounded-lg border-2 p-4 bg-purple-200'>
             <div className='text-3xl bold m-4'>
                 {pregunta}
             </div>
