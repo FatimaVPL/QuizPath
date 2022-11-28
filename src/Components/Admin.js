@@ -6,15 +6,16 @@ import { db } from '../database/firebase';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
 import TarjetaCRUD from './Admin/TarjetaCRUD';
 import FormCategoria from './Admin/FormCategoria';
-
+import { useContexto } from '../Context/Contexto';
 const Admin = () => {
     const[isOpen, setIsOpen] = useState(false);
     const[preguntas, setPreguntas] = useState([]);
+    const {pregunta, setPregunta} = useContexto();
     useEffect(() => {
         const ocultarMenu = () =>{
-            //if(window.innerWidth > 768 && isOpen){
-                //setIsOpen(false);
-            //}            
+            if(window.innerWidth > 768 && isOpen){
+                setIsOpen(false);
+            }            
         }
         window.addEventListener("resize", ocultarMenu);
 
@@ -43,25 +44,44 @@ const Admin = () => {
     
     const [addPregunta, setAddPregunta] = useState(false);
     const [addCategoria, setAddCategoria] = useState(false);
-
+    const [updPregunta, setUpdPregunta] = useState(false);
     const toggleOpen = () =>{
         setIsOpen(!isOpen);
     }
     const agregarPregunta = () =>{
         setAddPregunta(true);
         setAddCategoria(false);
+        setUpdPregunta(false);
+        setPregunta({});
     }
     const agregarCategoria = () =>{
         setAddPregunta(false);
         setAddCategoria(true);
+        setUpdPregunta(false);
     }
     const btnVolver = () => {
         setAddPregunta(false);
         setAddCategoria(false);
+        setUpdPregunta(false);
+        setPregunta({});
+    }
+    const modificarPregunta = (pregunta) => {
+        setAddPregunta(false);
+        setAddCategoria(false);
+        setUpdPregunta(true);
+        setPregunta({
+            id: pregunta.id,
+            Categoria: pregunta.Categoria,
+            Pregunta: pregunta.Pregunta,
+            AC: pregunta.AC,
+            WA1: pregunta.WA1,
+            WA2: pregunta.WA2,
+            WA3: pregunta.WA3,
+        })
     }
     const renderedList = preguntas.map(
         (pregunta) => {
-            return <TarjetaCRUD pregunta = {pregunta}/>
+            return <TarjetaCRUD pregunta = {pregunta} modificar = {() => modificarPregunta(pregunta)}/>
         }
     )
 
@@ -80,9 +100,10 @@ const Admin = () => {
                     >Agregar Categoria
                     </button>                    
                 </div>
-                {addPregunta && <FormPregunta volver={btnVolver}/>}
+                {addPregunta && <FormPregunta volver={btnVolver} label="Agregar"/>}
                 {addCategoria && <FormCategoria volver={btnVolver}/>}
-                {!(addPregunta | addCategoria) && renderedList}
+                {updPregunta && <FormPregunta volver={btnVolver} label="Actualizar"/>}
+                {!(addPregunta | addCategoria | updPregunta) && renderedList}
             </div>
         </div>
     );

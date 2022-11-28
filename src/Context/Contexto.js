@@ -8,9 +8,9 @@ export const useContexto = () => {
 
 export const ContextoProvider = ({children}) =>{
     const [user, setUser] = useState('');
-
+    const [pregunta, setPregunta] = useState({});
     return(
-        <Contexto.Provider value={{user, setUser}}>
+        <Contexto.Provider value={{user, setUser, pregunta, setPregunta}}>
             {children}
         </Contexto.Provider>
     );

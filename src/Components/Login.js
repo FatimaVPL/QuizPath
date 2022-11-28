@@ -53,7 +53,6 @@ const Login = () => {
         try {
           await signInWithEmailAndPassword(auth, email, password);
           setIsSubmitted(true);
-          console.log(auth.currentUser);
           setUser(auth.currentUser.email);
         } catch (err) {
           console.error(err);
@@ -130,7 +129,7 @@ const Login = () => {
                     className="text-2xl"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Constrasenia"
+                    placeholder="Constraseña"
                 />
                 <div className='flex'>
                     <button className='rounded-lg border-radius-2 bg-white text-black bold m-2' onClick={() => logInWithEmailAndPassword(email, password)}>

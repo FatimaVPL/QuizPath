@@ -2,13 +2,11 @@ import React from 'react';
 import {FaCheck, FaTrashAlt, FaEdit} from 'react-icons/fa';
 import { db } from '../../database/firebase';
 import { doc, deleteDoc } from 'firebase/firestore';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+import { useContexto } from '../../Context/Contexto';
 const TarjetaCRUD = (props) => {
-    
-    const modificar = () => {
 
-    }
     const eliminar = async(id) => {
         const docRef = doc(db, "Preguntas", id);
         await deleteDoc(docRef);
@@ -39,7 +37,7 @@ const TarjetaCRUD = (props) => {
                     {props.pregunta.WA3}    
                 </div>
                     <div className='flex h-full items-center justify-center text-6xl'>
-                    <FaEdit className='text-blue-700 m-2' onClick={modificar} cursor="pointer"/>
+                    <FaEdit className='text-blue-700 m-2' onClick={() => props.modificar(props.pregunta.id)} cursor="pointer"/>
                     <FaTrashAlt className='text-red-700 m-2' onClick={() => eliminar(props.pregunta.id)} cursor="pointer"/>
                 </div>       
             </div>    

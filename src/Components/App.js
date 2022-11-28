@@ -8,7 +8,7 @@ import Login from './Login';
 import Jugar from './Jugar';
 import Admin from './Admin';
 import {ContextoProvider} from '../Context/Contexto';
-import { ToastContainer} from 'react-toastify';
+import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 const App = () => {
     return (
