@@ -1,8 +1,6 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth';
-import {
-getFirestore, query, getDocs, collection,
- where, addDoc,} from "firebase/firestore";
+import {getFirestore} from "firebase/firestore";
 const firebaseConfig = {
   apiKey: "AIzaSyC2KMxwwWDxj8JyrVUa5e6a9-m7bbtREBM",
   authDomain: "quizpath-ec4f8.firebaseapp.com",

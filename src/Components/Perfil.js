@@ -39,11 +39,10 @@ const Perfil = () =>{
             <div className='flex flex-col h-full rounded-lg bg-yellow-300 '>
                 {user}
                 <Link to="/inicio">
-                    <button className='text-3xl rounded-lg bg-sky-500 text-white w-full' onClick={() => logout()}>
+                    <button className='text-3xl rounded-lg bg-sky-500 text-white w-fit p-2' onClick={() => logout()}>
                         Logout
                     </button>                    
                 </Link>
-                
             </div>
         </div>
     );
